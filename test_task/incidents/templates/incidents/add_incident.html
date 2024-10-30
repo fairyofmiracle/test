@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить инцидент</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .form-container {
+            max-width: 500px; 
+            margin: auto; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Добавить инцидент</h1>
+        <div class="form-container">
+            <form method="post" class="border p-4 rounded shadow">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Сохранить</button>
+            </form>
+            <a href="{% url 'incident_list' %}" class="btn btn-link mt-3">Назад к списку</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> 
+
+<!-- <!DOCTYPE html>
+ <html lang="ru">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Добавить инцидент</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <style>
+         .form-container {
+             max-width: 500px; /* Уменьшение максимальной ширины формы */
+             margin: auto; /* Центрирование формы */
+         }
+     </style>
+ </head>
+ <body>
+     <div class="container mt-5">
+         <h1 class="mb-4 text-center">Добавить инцидент</h1>
+         <div class="form-container">
+            <form method="post" action="{% url 'add_incident' %}" class="border p-4 rounded shadow">
+                 {% csrf_token %}
+                 
+                 <div class="form-group">
+                     <label for="date">Дата происшествия:</label>
+                     <input type="date" class="form-control" id="date" name="date" required>
+                 </div>
+ 
+                 <div class="form-group">
+                     <label for="time">Время происшествия:</label>
+                     <input type="time" class="form-control" id="time" name="time" required>
+                 </div>
+ 
+                 <div class="form-group">
+                     <label for="district">Муниципальный район:</label>
+                     <input type="text" class="form-control" id="district" name="district" required>
+                 </div>
+ 
+                 <div class="form-group">
+                     <label for="location">Населенный пункт:</label>
+                     <input type="text" class="form-control" id="location" name="location" required>
+                 </div>
+ 
+                 <div class="form-group">
+                     <label for="type">Вид происшествия:</label>
+                     <select class="form-control" id="type" name="type" required>
+                         <option value="water">Вода</option>
+                         <option value="heat">Тепло</option>
+                         <option value="light">Свет</option>
+                         <option value="gas">Газ</option>
+                     </select>
+                 </div>
+ 
+                 <div class="form-group">
+                     <label for="houses_disconnected">Количество отключенных домов:</label>
+                     <input type="number" class="form-control" id="houses_disconnected" name="houses_disconnected" required>
+                 </div>
+ 
+                 <div class="form-group">
+                     <label for="recovery_date">Дата восстановления:</label>
+                     <input type="date" class="form-control" id="recovery_date" name="recovery_date" required>
+                 </div>
+
+                 <button type="submit" class="btn btn-primary btn-block">Сохранить</button>
+             </form>
+             <a href="{% url 'incident_list' %}" class="btn btn-link mt-3">Назад к списку</a>
+         </div>
+     </div>
+ 
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ </body>
+ </html> -->

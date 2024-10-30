@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать инцидент</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #343a40;
+        }
+        form {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px; 
+        }
+        button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Редактировать инцидент</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+        <a href="{% url 'incident_list' %}" class="btn btn-link mt-3">Назад к списку</a>
+    </div>
+</body>
+</html>
+
+
+ <!-- <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать инцидент</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #343a40;
+        }
+        .form-container {
+            max-width: 500px; /* Уменьшение максимальной ширины формы */
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin: auto; /* Центрирование формы */
+        }
+        button {
+            width: 100%;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Редактировать инцидент</h1>
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="date">Дата происшествия:</label>
+                    <input type="date" class="form-control" id="date" name="date" value="{{ form.date.value|default:'' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Время происшествия:</label>
+                    <input type="time" class="form-control" id="time" name="time" value="{{ form.time.value|default:'' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="district">Муниципальный район:</label>
+                    <input type="text" class="form-control" id="district" name="district" value="{{ form.district.value|default:'' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Населенный пункт:</label>
+                    <input type="text" class="form-control" id="location" name="location" value="{{ form.location.value|default:'' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Вид происшествия:</label>
+                    <select class="form-control" id="type" name="type" required>
+                        <option value="water" {% if form.type.value == 'water' %}selected{% endif %}>Вода</option>
+                        <option value="heat" {% if form.type.value == 'heat' %}selected{% endif %}>Тепло</option>
+                        <option value="light" {% if form.type.value == 'light' %}selected{% endif %}>Свет</option>
+                        <option value="gas" {% if form.type.value == 'gas' %}selected{% endif %}>Газ</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="houses_disconnected">Количество отключенных домов:</label>
+                    <input type="number" class="form-control" id="houses_disconnected" name="houses_disconnected" value="{{ form.houses_disconnected.value|default:'' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recovery_date">Дата восстановления:</label>
+                    <input type="date" class="form-control" id="recovery_date" name="recovery_date" value="{{ form.recovery_date.value|default:'' }}" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </form>
+            <a href="{% url 'incident_list' %}" class="btn btn-link mt-3">Назад к списку</a>
+        </div>
+    </div>
+</body>
+</html> -->

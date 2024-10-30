@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список инцидентов</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #343a40;
+        }
+        .incident-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .incident-item {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn-group {
+            display: inline-flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Список инцидентов</h1>
+        <a href="{% url 'add_incident' %}" class="btn btn-primary mb-3">Добавить инцидент</a>
+        <a href="{% url 'deleted_incidents' %}" class="btn btn-secondary mb-3">Показать удаленные инциденты</a>
+        {% if incidents %}
+            <ul class="incident-list">
+                {% for incident in incidents %}
+                    <li class="incident-item">
+                        <strong>{{ incident }}</strong>
+                        <div class="btn-group">
+                            <a href="{% url 'edit_incident' incident.pk %}" class="btn btn-link btn-edit">Редактировать</a>
+                            <form action="{% url 'delete_incident' incident.pk %}" method="get" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                            </form>                            
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Нет инцидентов для отображения.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

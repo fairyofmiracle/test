@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Удалённые инциденты</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Удалённые инциденты</h1>  
+        <a href="{% url 'incident_list' %}" class="btn btn-primary mb-3">Вернуться назад</a>     
+        {% if deleted_incidents %}
+        <ul class="list-group">
+            {% for incident in deleted_incidents %}
+                <li class="list-group-item">
+                    <strong>{{ incident }} </strong>
+                    <p>Комментарий: {{ incident.comment }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>Нет удалённых инцидентов для отображения.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
